@@ -41,12 +41,11 @@ class MovieListViewModel(
                 repository.getPopularTvShows().let {
                     if (it.isSuccessful) {
                         it.body()?.let { results ->
-
                             Log.i(TAG, "Successfully Retrieved ${results.totalResults} movies")
                             _movieList.postValue(Resource.success(results))
                         }
                     } else {
-                        Log.e(TAG, "Error fetching online car records: ${it.errorBody().toString()} ")
+                        Log.e(TAG, "Error fetching online movie records: ${it.errorBody().toString()} ")
                         _movieList.postValue(Resource.error(it.errorBody().toString(), null))
                     }
                 }

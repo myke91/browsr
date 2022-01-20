@@ -6,7 +6,7 @@ import com.zenjob.android.browsr.repository.MovieRepository
 import retrofit2.Response
 import java.util.Date
 
-class FakeCarRepository : MovieRepository {
+class FakeMovieRepository : MovieRepository {
 
     override suspend fun getPopularTvShows(
         query: String?,
@@ -22,18 +22,20 @@ class FakeCarRepository : MovieRepository {
                     imdbId = "",
                     overview = "simple overview 1",
                     title = "Good movie 1",
-                    "<some link to image>",
-                    Date(),
-                    0.1f
+                    posterPath = "<some link to image>",
+                    backdropPath = "<some link to image>",
+                    releaseDate = Date(),
+                    voteAverage = 0.1f
                 ),
                 Movie(
                     id = 1L,
                     imdbId = "",
                     overview = "simple overview 2",
                     title = "Good movie 2",
-                    "<some link to image>",
-                    Date(),
-                    0.1f
+                    posterPath = "<some link to image>",
+                    backdropPath = "<some link to image>",
+                    releaseDate = Date(),
+                    voteAverage = 0.1f
                 )
             ),
         )
@@ -47,9 +49,10 @@ class FakeCarRepository : MovieRepository {
             imdbId = "",
             overview = "simple overview 1",
             title = "Good movie 1",
-            "<some link to image>",
-            Date(),
-            0.1f
+            posterPath = "<some link to image>",
+            backdropPath = "<some link to image>",
+            releaseDate = Date(),
+            voteAverage = 0.1f
         )
         return Response.success(response)
     }

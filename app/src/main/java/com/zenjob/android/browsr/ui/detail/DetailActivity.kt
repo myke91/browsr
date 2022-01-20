@@ -15,20 +15,18 @@ import com.zenjob.android.browsr.data.Movie
 
 class DetailActivity : AppCompatActivity() {
 
-    val titleTv: TextView by lazy { findViewById<TextView>(R.id.title) }
-    val ratingTv: TextView by lazy { findViewById<TextView>(R.id.rating) }
-    val releaseDateTv: TextView by lazy { findViewById<TextView>(R.id.release_date) }
-    val descriptionTv: TextView by lazy { findViewById<TextView>(R.id.description) }
-    val movieImage: ImageView by lazy { findViewById<ImageView>(R.id.movie_image) }
+    private val titleTv: TextView by lazy { findViewById<TextView>(R.id.title) }
+    private val ratingTv: TextView by lazy { findViewById<TextView>(R.id.rating) }
+    private val releaseDateTv: TextView by lazy { findViewById<TextView>(R.id.release_date) }
+    private val descriptionTv: TextView by lazy { findViewById<TextView>(R.id.description) }
+    private val movieImage: ImageView by lazy { findViewById<ImageView>(R.id.movie_image) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val movie =
-            if (intent.hasExtra("movie")) intent.getSerializableExtra("movie") as Movie else null
-
-        if (movie == null) return
+        val movie = (if (intent.hasExtra("movie")) intent.getSerializableExtra("movie")
+                as Movie else null) ?: return
 
         titleTv.text = movie.title
         releaseDateTv.text = String.format(
@@ -40,12 +38,8 @@ class DetailActivity : AppCompatActivity() {
         descriptionTv.text = movie.overview
 
         val picasso = Picasso.get()
-        picasso.setIndicatorsEnabled(true)
         if (movie.posterPath != null) {
             picasso.load(BuildConfig.IMAGES_URL + movie.posterPath)
-                .networkPolicy(NetworkPolicy.NO_CACHE)
-                .memoryPolicy(MemoryPolicy.NO_STORE)
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .into(movieImage)
         } else {
             picasso.load(R.drawable.movie)

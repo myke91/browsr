@@ -42,29 +42,20 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(Mo
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = getItem(position)
         holder.bind(movie, listener)
-
-    }
-
-    fun submList(list: List<Movie>){
-
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val movieImage: ImageView = itemView.findViewById(R.id.poster)
-        val titleTv: TextView = itemView.findViewById(R.id.title)
-        val ratingTv: TextView = itemView.findViewById(R.id.rating)
-        val releaseDateTv: TextView = itemView.findViewById(R.id.release_date)
+        private val movieImage: ImageView = itemView.findViewById(R.id.poster)
+        private val titleTv: TextView = itemView.findViewById(R.id.title)
+        private val ratingTv: TextView = itemView.findViewById(R.id.rating)
+        private val releaseDateTv: TextView = itemView.findViewById(R.id.release_date)
 
         fun bind(movie: Movie, listener: OnItemClickListener?) {
             val picasso = Picasso.get()
-            picasso.setIndicatorsEnabled(true)
             if (movie.backdropPath != null) {
                 picasso.load(BuildConfig.IMAGES_URL + movie.backdropPath)
                     .placeholder(R.drawable.movie)
-                    .networkPolicy(NetworkPolicy.NO_CACHE)
-                    .memoryPolicy(MemoryPolicy.NO_STORE)
-                    .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .into(movieImage)
             } else {
                 picasso.load(R.drawable.movie)

@@ -32,13 +32,13 @@ class MovieListViewModelTest : TestCase() {
     var initRule: MockitoRule = MockitoJUnit.rule()
 
     private val testDispatcher = TestCoroutineDispatcher()
-    private lateinit var repository: FakeCarRepository
+    private lateinit var repository: FakeMovieRepository
     private var movieListViewModel: MovieListViewModel? = null
 
     @Before
     fun setup() {
         Dispatchers.setMain(testDispatcher)
-        repository = FakeCarRepository()
+        repository = FakeMovieRepository()
         movieListViewModel = MovieListViewModel(repository, null)
     }
 

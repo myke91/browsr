@@ -23,7 +23,7 @@ import com.zenjob.android.browsr.utils.EspressoIdlingResource
 
 class ListActivity : AppCompatActivity(), MovieListAdapter.OnItemClickListener {
 
-    val mAdapter = MovieListAdapter().apply { listener = this@ListActivity }
+    private val mAdapter = MovieListAdapter().apply { listener = this@ListActivity }
 
     private lateinit var binding: ActivityListBinding
     private val movieListViewModel: MovieListViewModel by viewModel()
