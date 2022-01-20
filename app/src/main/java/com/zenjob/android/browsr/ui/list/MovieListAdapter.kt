@@ -1,12 +1,18 @@
-package com.zenjob.android.browsr.list
+package com.zenjob.android.browsr.ui.list
 
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
+import com.zenjob.android.browsr.BuildConfig
 import com.zenjob.android.browsr.R
 import com.zenjob.android.browsr.data.Movie
 
@@ -39,19 +45,39 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(Mo
 
     }
 
-    class MovieViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    fun submList(list: List<Movie>){
 
+    }
 
+    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val movieImage: ImageView = itemView.findViewById(R.id.poster)
         val titleTv: TextView = itemView.findViewById(R.id.title)
         val ratingTv: TextView = itemView.findViewById(R.id.rating)
         val releaseDateTv: TextView = itemView.findViewById(R.id.release_date)
 
         fun bind(movie: Movie, listener: OnItemClickListener?) {
+            val picasso = Picasso.get()
+            picasso.setIndicatorsEnabled(true)
+            if (movie.backdropPath != null) {
+                picasso.load(BuildConfig.IMAGES_URL + movie.backdropPath)
+                    .placeholder(R.drawable.movie)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_STORE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(movieImage)
+            } else {
+                picasso.load(R.drawable.movie)
+                    .noFade()
+                    .into(movieImage)
+            }
 
             titleTv.text = movie.title
-            releaseDateTv.text = android.text.format.DateFormat.format("yyyy", movie.releaseDate)
-            ratingTv.text = "${movie.voteAverage ?: 0}"
+            releaseDateTv.text = String.format(
+                "%s%s", itemView.context.getString(R.string.release_date),
+                DateFormat.format("yyyy", movie.releaseDate)
+            )
+            ratingTv.text = String.format("%s%s", itemView.context.getString(R.string.rating), "${movie.voteAverage ?: 0}")
 
             itemView.setOnClickListener {
                 // Triggers click upwards to the adapter on click
