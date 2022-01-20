@@ -6,10 +6,10 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 
 fun ViewInteraction.isDisplayed(): Boolean {
-    try {
+    return try {
         check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        return true
+        true
     } catch (e: NoMatchingViewException) {
-        return false
+        false
     }
 }
