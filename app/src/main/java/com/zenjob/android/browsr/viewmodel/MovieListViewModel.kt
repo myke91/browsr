@@ -35,7 +35,7 @@ class MovieListViewModel(
 
 
      fun fetchMovies() {
-        viewModelScope.launch {
+        job = viewModelScope.launch {
             _movieList.postValue(Resource.loading(null))
             if (networkHelper?.isNetworkConnected() == true) {
                 repository.getPopularTvShows().let {

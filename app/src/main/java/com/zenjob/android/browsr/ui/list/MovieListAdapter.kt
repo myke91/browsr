@@ -9,12 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.zenjob.android.browsr.BuildConfig
 import com.zenjob.android.browsr.R
 import com.zenjob.android.browsr.data.Movie
+import com.zenjob.android.browsr.utils.loadImageUrl
 
 
 class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(MovieDiffCallback()) {
@@ -52,13 +51,10 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(Mo
         private val releaseDateTv: TextView = itemView.findViewById(R.id.release_date)
 
         fun bind(movie: Movie, listener: OnItemClickListener?) {
-            val picasso = Picasso.get()
             if (movie.backdropPath != null) {
-                picasso.load(BuildConfig.IMAGES_URL + movie.backdropPath)
-                    .placeholder(R.drawable.movie)
-                    .into(movieImage)
+                movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.backdropPath, true)
             } else {
-                picasso.load(R.drawable.movie)
+                Picasso.get().load(R.drawable.movie)
                     .noFade()
                     .into(movieImage)
             }
@@ -68,7 +64,11 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(Mo
                 "%s%s", itemView.context.getString(R.string.release_date),
                 DateFormat.format("yyyy", movie.releaseDate)
             )
-            ratingTv.text = String.format("%s%s", itemView.context.getString(R.string.rating), "${movie.voteAverage ?: 0}")
+            ratingTv.text = String.format(
+                "%s%s",
+                itemView.context.getString(R.string.rating),
+                "${movie.voteAverage ?: 0}"
+            )
 
             itemView.setOnClickListener {
                 // Triggers click upwards to the adapter on click

@@ -5,12 +5,11 @@ import android.text.format.DateFormat
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.zenjob.android.browsr.BuildConfig
 import com.zenjob.android.browsr.R
 import com.zenjob.android.browsr.data.Movie
+import com.zenjob.android.browsr.utils.loadImageUrl
 
 
 class DetailActivity : AppCompatActivity() {
@@ -37,12 +36,10 @@ class DetailActivity : AppCompatActivity() {
             String.format("%s%s", getString(R.string.rating), "${movie.voteAverage ?: 0}")
         descriptionTv.text = movie.overview
 
-        val picasso = Picasso.get()
         if (movie.posterPath != null) {
-            picasso.load(BuildConfig.IMAGES_URL + movie.posterPath)
-                .into(movieImage)
+            movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.posterPath, false)
         } else {
-            picasso.load(R.drawable.movie)
+            Picasso.get().load(R.drawable.movie)
                 .noFade()
                 .into(movieImage)
         }
