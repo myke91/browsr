@@ -52,7 +52,7 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(Mo
 
         fun bind(movie: Movie, listener: OnItemClickListener?) {
             if (movie.backdropPath != null) {
-                movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.backdropPath, true)
+                movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.backdropPath, R.drawable.movie)
             } else {
                 Picasso.get().load(R.drawable.movie)
                     .noFade()

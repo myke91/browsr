@@ -37,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         descriptionTv.text = movie.overview
 
         if (movie.posterPath != null) {
-            movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.posterPath, false)
+            movieImage.loadImageUrl(BuildConfig.IMAGES_URL + movie.posterPath, null)
         } else {
             Picasso.get().load(R.drawable.movie)
                 .noFade()
