@@ -21,7 +21,6 @@ class MovieListViewModel(
     private val repository: MovieRepository,
     private val networkHelper: NetworkHelper?
 ) : BrowsrViewModel() {
-    var job: Job? = null
 
     private val _movieList = MutableLiveData<Resource<PaginatedListResponse<Movie>>>()
     val movieList: LiveData<Resource<PaginatedListResponse<Movie>>>
@@ -34,8 +33,8 @@ class MovieListViewModel(
     }
 
 
-     fun fetchMovies() {
-        job = viewModelScope.launch {
+    fun fetchMovies() {
+        viewModelScope.launch {
             _movieList.postValue(Resource.loading(null))
             if (networkHelper?.isNetworkConnected() == true) {
                 repository.getPopularTvShows().let {
@@ -45,18 +44,14 @@ class MovieListViewModel(
                             _movieList.postValue(Resource.success(results))
                         }
                     } else {
-                        Log.e(TAG, "Error fetching online movie records: ${it.errorBody().toString()} ")
+                        Log.e(
+                            TAG,
+                            "Error fetching online movie records: ${it.errorBody().toString()} "
+                        )
                         _movieList.postValue(Resource.error(it.errorBody().toString(), null))
                     }
                 }
             }
         }
     }
-
-    override fun onCleared() {
-        Log.d(TAG, "Cancelling courotine job...")
-        super.onCleared()
-        job?.cancel()
-    }
-
 }
