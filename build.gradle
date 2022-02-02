@@ -11,13 +11,14 @@ buildscript {
     ext.material_version = '1.5.0'
     ext.retrofit_version = '2.9.0'
     ext.moshi_version = '1.12.0'
-    ext.koin_version = '3.0.1'
+    ext.dagger_version = '2.40.5'
     ext.okhttp3_version = '4.2.1'
     ext.databinding_version = '7.0.4'
     ext.android_arch_version = '1.1.1'
     ext.courotine_version = '1.5.2'
     ext.espresso_version = '3.4.0'
     ext.cardview_version = '1.0.0'
+    ext.nav_version = '2.4.0'
 
     repositories {
         google()
@@ -27,6 +28,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

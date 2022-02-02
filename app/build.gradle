@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -52,7 +54,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.cardview:cardview:$cardview_version"
-
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
 
 
     //viewmodel + livedata
@@ -81,8 +83,22 @@ dependencies {
     //image processing
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //DI (Koin)
-    implementation "io.insert-koin:koin-android:$koin_version"
+    //DI (Dagger 2)
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
 
 
     //test
