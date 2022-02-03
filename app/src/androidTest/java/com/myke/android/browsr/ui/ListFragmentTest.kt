@@ -1,5 +1,8 @@
 package com.myke.android.browsr.ui
 
+import androidx.fragment.app.testing.FragmentScenario
+import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
@@ -9,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.myke.android.browsr.R
+import com.myke.android.browsr.movies.detail.DetailFragment
 import com.myke.android.browsr.movies.list.ListFragment
 import com.myke.android.browsr.movies.list.MovieListAdapter
 import com.myke.android.browsr.utils.EspressoIdlingResource
@@ -20,7 +24,8 @@ import org.junit.runners.MethodSorters
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4::class)
 class ListFragmentTest {
-    @get:Rule val fragmentScenarioRule = activityScenarioRule<ListFragment>()
+     val scenario = launchFragmentInContainer<ListFragment>()
+
 
     @Before
     fun registerIdlingResource() {
