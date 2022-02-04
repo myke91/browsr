@@ -1,4 +1,4 @@
-package com.myke.android.browsr.data.datasource
+package com.myke.android.browsr.data.source
 
 import com.myke.android.browsr.data.Movie
 import com.myke.android.browsr.data.PaginatedListResponse

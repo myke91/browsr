@@ -2,7 +2,7 @@ package com.myke.android.browsr.data.repository
 
 import com.myke.android.browsr.data.Movie
 import com.myke.android.browsr.data.PaginatedListResponse
-import com.myke.android.browsr.data.datasource.remote.MoviesRemoteDatasource
+import com.myke.android.browsr.data.source.remote.MoviesRemoteDatasource
 import retrofit2.Response
 import javax.inject.Inject
 

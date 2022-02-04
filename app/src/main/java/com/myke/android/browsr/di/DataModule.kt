@@ -1,8 +1,8 @@
 package com.myke.android.browsr.di
 
 import com.myke.android.browsr.network.MoviesApiImpl
-import com.myke.android.browsr.data.datasource.MoviesDatasource
-import com.myke.android.browsr.data.datasource.remote.MoviesRemoteDatasource
+import com.myke.android.browsr.data.source.MoviesDatasource
+import com.myke.android.browsr.data.source.remote.MoviesRemoteDatasource
 import com.myke.android.browsr.data.repository.DefaultMovieRepository
 import com.myke.android.browsr.data.repository.MovieRepository
 import dagger.Module
