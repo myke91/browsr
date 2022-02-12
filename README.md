@@ -4,7 +4,7 @@ This application is a simple application that demonstrate android best practices
 new feature in the jetpacks libraries
 It uses the TMDB api 
 The application was refactored to use MVVM architecture with CLEAN Architecture.
-
+This branch introduces the use of gradle modules
 
 
 Frameworks
