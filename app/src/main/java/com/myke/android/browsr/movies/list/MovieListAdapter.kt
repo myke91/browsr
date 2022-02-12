@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import com.myke.android.browsr.BuildConfig
 import com.myke.android.browsr.R
 import com.myke.android.browsr.data.Movie
-import com.myke.android.browsr.utils.loadImageUrl
+import com.myke.android.browsr.util.loadImageUrl
 
 
 class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(MovieDiffCallback()) {

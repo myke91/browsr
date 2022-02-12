@@ -11,14 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.myke.android.browsr.base.BrowsrApplication
+import com.myke.android.browsr.BrowsrApplication
 import com.myke.android.browsr.data.Movie
 import com.myke.android.browsr.databinding.FragmentListBinding
 import com.myke.android.browsr.di.ViewModelFactory
 import com.myke.android.browsr.movies.MoviesActivity
-import com.myke.android.browsr.utils.Constants.TAG
-import com.myke.android.browsr.utils.Status
 import com.myke.android.browsr.movies.MovieListViewModel
+import com.myke.android.browsr.util.Constants.TAG
+import com.myke.android.browsr.util.Status
 import javax.inject.Inject
 
 

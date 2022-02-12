@@ -5,15 +5,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.myke.android.browsr.core.BrowsrViewModel
 import com.myke.android.browsr.data.Movie
 import com.myke.android.browsr.data.PaginatedListResponse
 import com.myke.android.browsr.network.NetworkHelper
-import com.myke.android.browsr.utils.Constants.TAG
-import com.myke.android.browsr.utils.EspressoIdlingResource.wrapEspressoIdlingResource
-import com.myke.android.browsr.utils.Resource
-import com.myke.android.browsr.base.BrowsrViewModel
 import com.myke.android.browsr.domain.GetMovieDetailsUseCase
 import com.myke.android.browsr.domain.GetPopularMoviesUseCase
+import com.myke.android.browsr.util.Constants.TAG
+import com.myke.android.browsr.util.EspressoIdlingResource.wrapEspressoIdlingResource
+import com.myke.android.browsr.util.Resource
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

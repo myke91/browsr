@@ -61,6 +61,9 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":util")))
+    implementation(project(mapOf("path" to ":network")))
 
     implementation(Libraries.kotlin_stdlib)
     implementation(Libraries.appcompat)

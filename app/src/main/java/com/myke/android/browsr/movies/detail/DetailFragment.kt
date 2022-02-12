@@ -11,18 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.myke.android.browsr.BrowsrApplication
 import com.squareup.picasso.Picasso
-import com.myke.android.browsr.base.BrowsrApplication
 import com.myke.android.browsr.BuildConfig
 import com.myke.android.browsr.R
 import com.myke.android.browsr.data.Movie
 import com.myke.android.browsr.databinding.FragmentDetailBinding
 import com.myke.android.browsr.di.ViewModelFactory
 import com.myke.android.browsr.movies.MoviesActivity
-import com.myke.android.browsr.utils.Constants
-import com.myke.android.browsr.utils.Status
 import com.myke.android.browsr.movies.MovieListViewModel
-import com.myke.android.browsr.utils.loadImageUrl
+import com.myke.android.browsr.util.Constants
+import com.myke.android.browsr.util.Status
+import com.myke.android.browsr.util.loadImageUrl
 import javax.inject.Inject
 
 

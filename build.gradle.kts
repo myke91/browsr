@@ -10,6 +10,7 @@ buildscript {
         classpath(Libraries.gradle_build_tools)
         classpath(Libraries.kotlin_gradle_plugin)
         classpath(Libraries.nagivation_safe_args_plugin)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

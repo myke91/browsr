@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.NavHostFragment
-import com.myke.android.browsr.base.BrowsrApplication
+import com.myke.android.browsr.BrowsrApplication
 import com.myke.android.browsr.R
 import com.myke.android.browsr.di.MoviesComponent
 import javax.inject.Inject
